@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as rechargeService from "../services/rechargeService";
+import * as rechargeService from "../services/rechargesService";
 
 export async function createRecharge(req: Request, res: Response) {
   const recharge = await rechargeService.createRecharge(req.body);
