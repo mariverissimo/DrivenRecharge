@@ -26,3 +26,9 @@ export async function countPhonesByDocument(document: string) {
   const result = await db.query(`SELECT COUNT(*) FROM phones WHERE document = $1`, [document]);
   return Number(result.rows[0].count);
 }
+
+export async function findById(id: number) {
+  const result = await db.query(`SELECT * FROM phones WHERE id = $1`, [id]);
+  return result.rows[0];
+}
+
