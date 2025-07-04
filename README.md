@@ -1,15 +1,27 @@
-# 📱 Driven Recharge API
+# Driven Recharge
 
-Este projeto é uma API RESTful desenvolvida em TypeScript com Node.js e PostgreSQL para gerenciamento de telefones, recargas e consolidados de clientes.
+API para gerenciar recargas de telefones e visualizar um resumo de recargas realizadas.
 
 ## 🚀 Tecnologias
-
 - Node.js
-- TypeScript
 - Express
+- TypeScript
 - PostgreSQL
-- Joi (validação)
-- dotenv
-- Render (deploy)
+- Joi
 
+## 🌐 Deploy
+O projeto está hospedado na Render:
+[https://drivenrecharge-kgj5.onrender.com](https://drivenrecharge-kgj5.onrender.com)
 
+## ⚙️ Scripts disponíveis
+
+- `npm run dev` — inicia em modo desenvolvimento com `ts-node-dev`
+- `npm run build` — compila o TypeScript em `dist/`
+- `npm start` — roda o projeto compilado
+
+## 📄 Variáveis de Ambiente
+
+O projeto requer as seguintes variáveis no `.env`:
+
+- `DATABASE_URL` — string de conexão com o banco de dados PostgreSQL
+- `PORT` — porta em que a aplicação irá rodar
