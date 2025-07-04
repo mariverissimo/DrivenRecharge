@@ -3,8 +3,9 @@ import * as phoneService from "../services/phoneService";
 
 export async function createPhone(req: Request, res: Response) {
   const phone = req.body;
-  await phoneService.createPhone(phone);
-  res.sendStatus(201);
+  const createdPhone = await phoneService.createPhone(phone);
+  res.status(201).send(createdPhone);
+
 }
 
 export async function listPhones(req: Request, res: Response) {
