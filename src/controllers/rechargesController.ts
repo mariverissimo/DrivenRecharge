@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import * as rechargeService from "../services/rechargesService";
-import { RechargeInsertData } from "../protocols/rechargeProtocol";
+import { RechargeSchemaType } from "../schemas/rechargesSchema";
 
 export async function createRecharge(
-  req: Request<unknown, unknown, RechargeInsertData>,
+  req: Request<unknown, unknown, RechargeSchemaType>,
   res: Response,
   next: NextFunction
 ) {

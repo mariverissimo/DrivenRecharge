@@ -7,3 +7,12 @@ export const phoneSchema = Joi.object({
   document: Joi.string().required(),
   carrier_id: Joi.number().required(),
 });
+
+// Manual typing
+export type PhoneSchemaType = {
+  number: string;
+  name: string;
+  description: string;
+  document: string;
+  carrier_id: number;
+};
