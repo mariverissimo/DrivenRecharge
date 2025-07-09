@@ -6,3 +6,5 @@ export type Phone = {
   document: string;
   carrier_id: number;
 };
+
+export type PhoneInput = Omit<Phone, "id">;
