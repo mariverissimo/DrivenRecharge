@@ -5,10 +5,10 @@ export function validateSchema(schema: ObjectSchema) {
   return (req: Request, res: Response, next: NextFunction): void => {
     const { error } = schema.validate(req.body, { abortEarly: false });
     if (error) {
-      res.status(422).send(error.details.map(d => d.message));
+      const messages = error.details.map(d => d.message);
+      res.status(422).json({ errors: messages });
       return;
     }
     next();
   };
 }
-
