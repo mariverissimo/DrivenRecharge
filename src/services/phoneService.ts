@@ -22,6 +22,10 @@ export async function createPhone(phone: Omit<Phone, "id">): Promise<Phone> {
   return createdPhone;
 }
 
+export async function listAllPhones(): Promise<Phone[]> {
+  return phoneRepository.findAllPhones();
+}
+
 export async function listPhones(document: string): Promise<Phone[]> {
   return phoneRepository.findPhonesByDocument(document);
 }

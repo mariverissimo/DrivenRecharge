@@ -16,6 +16,11 @@ export async function insertPhone(phone: PhoneInput): Promise<Phone> {
   return result.rows[0];
 }
 
+export async function findAllPhones(): Promise<Phone[]> {
+  const result = await db.query<Phone>(`SELECT * FROM phones`);
+  return result.rows;
+}
+
 export async function findPhonesByDocument(document: string): Promise<Phone[]> {
   const result = await db.query<Phone>(
     `SELECT * FROM phones WHERE document = $1;`,

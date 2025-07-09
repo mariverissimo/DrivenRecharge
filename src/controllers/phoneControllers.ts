@@ -28,3 +28,13 @@ export async function listPhones(
     next(err);
   }
 }
+
+export async function listAllPhones(req: Request, res: Response, next: NextFunction) {
+  try {
+    const phones = await phoneService.listAllPhones();
+    res.send(phones);
+  } catch (err) {
+    next(err);
+  }
+}
+
