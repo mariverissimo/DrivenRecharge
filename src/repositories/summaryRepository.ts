@@ -1,7 +1,7 @@
 import { db } from "../database/db";
-
-export async function findPhonesWithRecharges(document: string) {
-  const result = await db.query(
+import { PhoneSummary } from "../protocols/summaryProtocols";
+export async function findPhonesWithRecharges(document: string): Promise<PhoneSummary[]> {
+  const result = await db.query<PhoneSummary>(
     `
     SELECT
       p.id AS phone_id,
