@@ -1,5 +1,22 @@
 import { db } from "../database/db";
-import { PhoneSummary } from "../protocols/summaryProtocols";
+
+export type RechargeSummary = {
+  id: number;
+  amount: number;
+  createdAt: string;
+};
+
+export type PhoneSummary = {
+  phone_id: number;
+  number: string;
+  name: string;
+  description: string;
+  carrier_id: number;
+  carrier_name: string;
+  carrier_code: number;
+  recharges: RechargeSummary[];
+};
+
 export async function findPhonesWithRecharges(document: string): Promise<PhoneSummary[]> {
   const result = await db.query<PhoneSummary>(
     `
@@ -16,7 +33,7 @@ export async function findPhonesWithRecharges(document: string): Promise<PhoneSu
           json_build_object(
             'id', r.id,
             'amount', r.amount,
-            'createdAt', r.created_at
+            'createdAt', r.created_at::text
           )
         ) FILTER (WHERE r.id IS NOT NULL),
         '[]'

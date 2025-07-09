@@ -11,13 +11,13 @@ export async function getSummary(document: string) {
     carrier: {
       id: p.carrier_id,
       name: p.carrier_name,
-      code: p.carrier_code
+      code: p.carrier_code,
     },
-    recharges: p.recharges
+    recharges: p.recharges,
   }));
 
   return {
     document,
-    phones: formattedPhones
+    phones: formattedPhones,
   };
 }
