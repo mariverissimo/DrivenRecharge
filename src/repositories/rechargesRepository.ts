@@ -1,8 +1,8 @@
 import { db } from "../database/db";
-import { RechargeInsertData } from "../protocols/rechargeProtocol";
+import { Recharge, RechargeInsertData } from "../protocols/rechargeProtocol";
 
-export async function create(data: RechargeInsertData) {
-  const result = await db.query(
+export async function create(data: RechargeInsertData): Promise<Recharge> {
+  const result = await db.query<Recharge>(
     `
     INSERT INTO recharges (phone_id, amount)
     VALUES ($1, $2)
@@ -13,8 +13,8 @@ export async function create(data: RechargeInsertData) {
   return result.rows[0];
 }
 
-export async function findByNumber(number: string) {
-  const result = await db.query(
+export async function findByNumber(number: string): Promise<Recharge[]> {
+  const result = await db.query<Recharge>(
     `
     SELECT r.*
     FROM recharges r
