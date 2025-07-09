@@ -25,10 +25,29 @@ export async function findPhonesByDocument(document: string): Promise<Phone[]> {
   return result.rows;
 }
 
+export async function findPhoneByNumber(number: string): Promise<Phone | null> {
+  const result = await db.query<Phone>(
+    `SELECT * FROM phones WHERE number = $1;`,
+    [number]
+  );
+
+  return result.rows[0] || null;
+}
+
+export async function countPhonesByDocument(document: string): Promise<number> {
+  const result = await db.query<{ count: string }>(
+    `SELECT COUNT(*) FROM phones WHERE document = $1;`,
+    [document]
+  );
+
+  return Number(result.rows[0].count);
+}
+
 export async function findById(id: number): Promise<Phone | null> {
   const result = await db.query<Phone>(
-    `SELECT * FROM phones WHERE id = $1`,
+    `SELECT * FROM phones WHERE id = $1;`,
     [id]
   );
+
   return result.rows[0] || null;
 }
